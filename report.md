@@ -66,7 +66,7 @@ $$
 
 Одновременно, мы анализировали и сохраняли полученные результаты.
 
-Также мы запускали модель обнаруживать и сопровождать объекты на потоковом видео. При чем, мы выбирали видео в разном разрешении.  
+Также мы запускали модель обнаруживать и сопровождать объекты на потоковом видео. Причем, мы выбирали видео в разном разрешении.  
 
 На финальном шаге мы аккумулировали полезные материалы и код в репозиторий, а результаты – в итоговую таблицу, сформулировали и оформили выводы. 
 
@@ -77,17 +77,14 @@ $$
 
 | Модель | Трекер |Формат входного изображения| Количество кадров| Параметр imgsz| Recall | Precision | MOTA | MOTP | Время вывода одного кадра |Общее время вывода |
 |:---- |:------ |:---------|:------- | :---------|:------ |:--------- | :------- |:------ |:--------- | :------- |
-| YOLOv10(baseline)|**BoT-SORT** |**jpg**|100|640| 0.928401 |  0.997436 | 0.921241 | 0.09007| 114.50 ms| 0:00:11.450301 min:s|
+| YOLOv10(baseline)|**BoT-SORT** |**jpg**|100|640|0.928401 |0.997436 |0.921241| 0.09007| 114.50 ms | 0:00:11.450301 min:s|
 | YOLOv10|BoT-SORT |jpg|100|480|0.918854|1.0|0.914081|0.088913|125.75 ms|0:00:12.575490 min:s|
-| YOLOv10|BoT-SORT |jpg|400|480|      |  |  |  | | |
-| YOLOv10|BoT-SORT |jpg|400|352|      |  |  | |  | |
 | YOLOv10|BoT-SORT |**mp4**|99 |480|0.917275|1.0|0.912409|0.089113|105.42 ms|0:00:10.436469 min:s|
 | YOLOv10|BoT-SORT |mp4|99 |352|0.917275|1.0|0.912409| 0.089113| 90.64 ms |0:00:08.973363 min:s|
 | YOLOv10|BoT-SORT |mp4|**21565**|480|0.921751|0.998905| **0.917861**|0.080872|110.55 ms|0:37:54.856070 min:s|
 | YOLOv10|BoT-SORT |mp4|21565|352|0.912338|0.999576|0.909136|0.092135|**91.56 ms**|0:32:54.551819 min:s|
 | YOLOv10|**ByteTrack**|mp4|99 |640|0.917275|1.0|**0.912409**|0.089113|61.28 ms|0:00:06.066682 min:s|
 | YOLOv10|ByteTrack|mp4|99 |352|0.917275|1.0|0.912409| 0.089113|**33.71 ms** |0:00:03.337105 min:s|
-| YOLOv10)|**ByteTrack**|mp4|21565|352| | |   | |||
 
 
 **Анализ результатов:**
@@ -141,12 +138,49 @@ $$
 - [`Библиотека py-motmetrics`](https://github.com/cheind/py-motmetrics) 
 
 
+**Возможные направления развития проекта:**
+
+- **Использовать другие модели и трекеры:** Deep SORT, FairMOT, DEVA, CSRT.
+
+
+- **Обучить модель на датасете большего размера:** Обучение моделей на большем датасете может улучшить их качество и обобщающую способность.
+
+
+- **Изменить положение записывающей камеры:** 
+   - Переместить камеру дальше от места подачи мусора, чтобы исключить "влетание" мусора в кадр и дальнейшее его неконтролируемое передвижение по конвейерной ленте.
+   - Поднять камеру выше над транспортерной лентой. При том же угле обзора это расширит поле зрения камеры и позволит модели дольше сопровождать  объекты, что, в свою очередь, даст выигрыш в качестве трекинга.
+
+
+- **Использовать Streamlit/FastAPI для более удобного трекинга и детекции объектов и анализа результатов.**
+
+**Структура репозитория:**
+
+| #    | Наименование файла                | Описание   |
+| ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1.   | [README.md](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/README.md) | Представлена основная информация по проекту и его результатах   |
+| 2.   | [config.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/config.py) | Класс, в котором задаются константы и пути к файлам   |
+| 3.   | [init_model.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/init_model.py) | Класс, который инициализирует работу модели детекции и трекинга объектов и всех функций необходимых для визуализации их работы и расчета метрик   |
+| 4.   | [main.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/main.py) | Код запуска всех методов имеющихся в классах    |
+| 5.   | [requirements.txt](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/requirements.txt) | Список всех библиотек и их версии, необходимых для установки в виртуальной среде для запуска кода проекта   |
+| 6.   | [streamlit_yolo.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/streamlit_yolo.py) | Веб приложение в стримлит с моделью заказчика YOLA |
+| 7.   | [report.md](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/report.md) | Отчёт о проделанной работе |
+| 8.   | [Renue_group_5.ipynb](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/Renue_group_5.ipynb) | Тетрадка с ходом исследования |
+| 9.   | [Presentation_Renue.pdf](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/Presentation_Renue.pdf) | Презентация проекта |
+
+**Ссылки:**
+
+- [`Модель Ultralitics Yolo`](https://docs.ultralytics.com/ru/modes/track/) 
+- [`Трекер BoT-Sort`](https://github.com/NirAharon/BoT-SORT) 
+- [`Трекер ByteTrack`](https://github.com/ifzhang/ByteTrack) 
+- [`Библиотека py-motmetrics`](https://github.com/cheind/py-motmetrics) 
+
+
 ## Команда проекта
 
-- Федор Сафонов  (TeamLead)
-- Анна Йорданова
-- Юрий Кашин
-- Александр Вотинов
-- Гульшат Зарипова
-- Сергей Пашкин
-- Александр Глазунов
+- [Федор Сафонов (TeamLead)](https://github.com/FedorSafonov)
+- [Анна Йорданова](https://github.com/A-Yordanova)
+- [Юрий Кашин](https://github.com/yakashin)
+- [Александр Вотинов](https://github.com/VotinovAlS)
+- [Гульшат Зарипова](https://github.com/gulshart)
+- [Сергей Пашкин](https://github.com/DrSartoriuss)
+- [Александр Глазунов](https://github.com/pzae)
