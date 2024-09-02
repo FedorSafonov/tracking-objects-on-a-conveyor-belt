@@ -2,15 +2,6 @@
 
 - Полный отчёт по проекту можно посмотреть в [report.md](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/report.md)
 
-## Команда проекта
-- Федор Сафонов  (TeamLead)
-- Анна Йорданова
-- Юрий Кашин
-- Александр Вотинов
-- Гульшат Зарипова
-- Сергей Пашкин
-- Александр Глазунов
-
 ## Описание
 
 ### С каждым годом количество мусора, генерируемое человеком растет, поэтому сортировка, переработка, а также автоматизация этого процесса является актуальной задачей.
@@ -79,13 +70,13 @@ Renue, IT-компания из Екатеринбурга
 
 | #    | Наименование файла                | Описание   |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1.   | [README.md](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/readme.md) | Представлена основная информация по проекту и его результатах   |
+| 1.   | [README.md](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/README.md) | Представлена основная информация по проекту и его результатах   |
 | 2.   | [constant_values.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/readme.md) | Класс, в котором задаются константы и пути к файлам   |
 | 3.   | [init_model.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/readme.md) | Класс, который инициализирует работу модели детекции и трекинга объектов и всех функций необходимых для визуализации их работы и расчета метрик   |
 | 4.   | [main.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/readme.md) | Код запуска всех методов имеющихся в классах    |
 | 5.   | [requirements.txt](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/readme.md) | Список всех библиотек и их версии, необходимых для установки в виртуальной среде для запуска кода проекта   |
 | 6.   | [streamlit_model.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/readme.md) | !!Описание будет позже!!   |
-| 7.   | [report.md](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/readme.md) | Отчет по проекту   |
+| 7.   | [report.md](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/report.md) | Отчет по проекту   |
 
 ## Итоги
 
@@ -96,12 +87,23 @@ Renue, IT-компания из Екатеринбурга
 * **Проект может быть развит в следующих направлениях:**
    * **Использование других моделей и трекеров:** Deep SORT, FairMOT, DEVA, CSRT.
    * **Обучение моделей на датасете большего размера:**  Обучение моделей на большем датасете может улучшить их качество и обобщающую способность.
-   * **Изменить положение записывающей камеры:** Переместить камеру дальше от места подачи мусора, чтобы исключить "влетание" мусора в кадр и дальнейшее его передвижение по конвеерной ленте.  
+   * **Изменить положение записывающей камеры:**
+     - Переместить камеру дальше от места подачи мусора, чтобы исключить "влетание" мусора в кадр и дальнейшее его передвижение по конвеерной ленте.
+     - Поднять камеру выше над транспортерной лентой. При том же угле обзора это расширит поле зрения камеры и позволит модели дольше сопровождать объекты, что, в свою очередь, даст выигрыш в качестве трекинга.  
    * **Использование Streamlit/FastAPI для более удобного трекинга и детекции объектов и анализа результатов**
 
 ## Cтатус: 
 Завершён.
 
 ## Стэк:
-Python, Numpy, SciPy, PyTorch, OpenCV, Ultralytics, BoxMOT, MMTracking
+Python, Ultralytics, Motmetrics, OpenCV, PyTorch, Numpy, SciPy, time, timedelta, PIL, OS, Glob
+
+## Команда проекта
+- [Федор Сафонов (TeamLead)](https://github.com/FedorSafonov)
+- [Анна Йорданова]
+- [Юрий Кашин](https://github.com/yakashin)
+- [Александр Вотинов](https://github.com/VotinovAlS)
+- [Гульшат Зарипова]
+- [Сергей Пашкин](https://github.com/DrSartoriuss)
+- [Александр Глазунов](https://github.com/pzae)
 
