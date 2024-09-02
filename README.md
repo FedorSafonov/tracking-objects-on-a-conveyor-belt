@@ -1,6 +1,6 @@
 # Трекинг объектов на конвеерной ленте
 
-- Полный отчёт по проекту можно посмотреть в [report.md](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/report.md)
+- Полный отчёт по проекту можно посмотреть в [report.md](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/report.md)
 
 ## Команда проекта
 - Федор Сафонов  (TeamLead)
