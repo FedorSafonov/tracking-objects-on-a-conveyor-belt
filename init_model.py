@@ -11,11 +11,11 @@ import cv2
 from tqdm import tqdm
 from ultralytics import YOLO
 
-from constant_values import ConstantValues
+from config import ConstValues
 
 
 class YOLOv10Tracker:
-    def __init__(self, model_path: str):
+    def __init__(self, model_path: str = ConstValues.PATH_MODEL):
         """
         Инициализирует YOLOv10Tracker с заданными параметрами.
         :param model_path: Путь к модели YOLO или наименование стандартной модели, которая будет загружена.
@@ -25,7 +25,7 @@ class YOLOv10Tracker:
         self.model = YOLO(model_path)
 
 
-    def test_track(self, video_path: str, max_track_length: int = 30,
+    def test_track(self, video_path: str, max_track_length: int = ConstValues.MAX_TRACK_LEN,
                    display_window_name: str = "YOLOv10 Tracking"):
         """
         Запускает процесс отслеживания объектов на видео с использованием модели YOLOv10.
@@ -118,14 +118,15 @@ class YOLOv10Tracker:
                 cv2.polylines(annotated_frame, [points], isClosed=False, color=color, thickness=3)
 
             if gt:
-                cv2.rectangle(annotated_frame, (int(x), int(y)), (int(x + w), int(y + h)), color, 5)  # Рисуем bounding box
+                # Рисуем bounding box
+                cv2.rectangle(annotated_frame, (int(x), int(y)), (int(x + w), int(y + h)), color, 5)
 
 
 
     def tracking_image(self, path_images: list, gt: np.array, path_results: str,
-                       output_video: str, imgsz: int = ConstantValues.IMGSZ,
-                       fps: int = ConstantValues.FPS,
-                       start_frame: int = ConstantValues.START,
+                       output_video: str, imgsz: int = ConstValues.IMGSZ,
+                       fps: int = ConstValues.FPS,
+                       start_frame: int = ConstValues.START,
                        need_show: bool = False, need_save_video: bool = True):
         """
         Обрабатывает набор изображений, выполняя отслеживание объектов с использованием модели YOLO и создает аннотированное видео.
@@ -137,7 +138,7 @@ class YOLOv10Tracker:
         - path_results (str): путь для сохранения выходных результатов (видеофайлов и JSON).
         - output_video (str): имя выходного видеофайла (по умолчанию 'output_video.mp4').
         - fps (int): количество кадров в секунду для выходного видео (по умолчанию 24).
-        - start_frame (int): начальный номер кадра (по умолчанию ConstantValues.START).
+        - start_frame (int): начальный номер кадра (по умолчанию ConstValues.START).
         - device (torch.device): устройство, на котором проводятся расчеты.
         - need_show (bool): если True, отображает видео в окне во время обработки (по умолчанию False).
             Работает только при need_save_video=True.
@@ -198,7 +199,7 @@ class YOLOv10Tracker:
             frame_id = frame_id + start_frame
 
             # Выполнение отслеживания с помощью модели YOLOv8
-            result = self.model.track(frame, persist=True, verbose=False, imgsz=imgsz, device=self.device)  # Выполняем отслеживание на CPU или GPU
+            result = self.model.track(frame, persist=True, verbose=False, imgsz=imgsz, device=self.device)
 
             # Получаем результат отслеживания для первого результата (предполагается, что это будет YOLOv8)
             result_0 = result[0]
@@ -241,9 +242,12 @@ class YOLOv10Tracker:
                 self.draw_track_and_boxes(annotated_frame, track_history_gt, xy_gt, wh_gt, track_ids_gt)
 
             # Добавление номера кадра в верхний правый угол
-            cv2.putText(annotated_frame, f"Frame: {frame_id}", (50, 150), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255), 2)
-            cv2.putText(annotated_frame, 'True', (50, 250), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 2)
-            cv2.putText(annotated_frame, 'Pred', (50, 300), cv2.FONT_HERSHEY_SIMPLEX, 2, (230, 230, 230), 2)
+            cv2.putText(annotated_frame, f"Frame: {frame_id}", (50, 150),
+                        cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255), 2)
+            cv2.putText(annotated_frame, 'True', (50, 250),
+                        cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 2)
+            cv2.putText(annotated_frame, 'Pred', (50, 300),
+                        cv2.FONT_HERSHEY_SIMPLEX, 2, (230, 230, 230), 2)
 
             stop_time = time()
             detla_time = timedelta(seconds=stop_time - start_time)
@@ -275,26 +279,26 @@ class YOLOv10Tracker:
         delta_time_mean = round(np.mean(time_list).total_seconds(), 4)
 
         # Сохранение в JSON файл
-        with open(path_results + f'pred_track_{ConstantValues.START}_{ConstantValues.STOP}.json', 'w') as json_file:
+        with open(path_results + f'pred_track_{ConstValues.START}_{ConstValues.STOP}.json', 'w') as json_file:
             json.dump(t_list, json_file)
 
-        print(f"Данные успешно сохранены в {path_results}'pred_track_{ConstantValues.START}_{ConstantValues.STOP}.json")
+        print(f"Данные успешно сохранены в {path_results}'pred_track_{ConstValues.START}_{ConstValues.STOP}.json")
 
         # Сохранение t_list в другой JSON файл
-        with open(path_results + f'delta_time_mean_{ConstantValues.START}_{ConstantValues.STOP}.json', 'w') as json_file:
+        with open(path_results + f'delta_time_mean_{ConstValues.START}_{ConstValues.STOP}.json', 'w') as json_file:
             json.dump(delta_time_mean, json_file)
 
-        print(f"Данные успешно сохранены в {path_results}'delta_time_mean_{ConstantValues.START}_{ConstantValues.STOP}.json")
+        print(f"Данные успешно сохранены в {path_results}'delta_time_mean_{ConstValues.START}_{ConstValues.STOP}.json")
 
         return t, delta_time_mean
 
 
     def tracking_video(self, video_path: str, gt: np.array,
-                       path_results: str = ConstantValues.PATH_RESULTS,
+                       path_results: str = ConstValues.PATH_RESULTS,
                        name_suffix: str = 'output',
                        output_video: str = 'output_video.mp4',
-                       imgsz: int = ConstantValues.IMGSZ,
-                       fps: int = ConstantValues.FPS,
+                       imgsz: int = ConstValues.IMGSZ,
+                       fps: int = ConstValues.FPS,
                        need_show: int = False, need_save_video: int = True):
         """
         Функция для отслеживания объектов на видео с помощью заданной модели и создания аннотированного видео.
@@ -408,10 +412,12 @@ class YOLOv10Tracker:
                     self.draw_track_and_boxes(annotated_frame, track_history_gt, xy_gt, wh_gt, track_ids_gt)
 
                 # Добавляем текст на кадр с идентификатором кадра и метками
-                cv2.putText(annotated_frame, f"Frame: {frame_id}", (50, 150), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255),
-                            2)
-                cv2.putText(annotated_frame, 'True', (50, 250), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 2)
-                cv2.putText(annotated_frame, 'Pred', (50, 300), cv2.FONT_HERSHEY_SIMPLEX, 2, (230, 230, 230), 2)
+                cv2.putText(annotated_frame, f"Frame: {frame_id}", (50, 150),
+                            cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255),2)
+                cv2.putText(annotated_frame, 'True', (50, 250),
+                            cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 2)
+                cv2.putText(annotated_frame, 'Pred', (50, 300),
+                            cv2.FONT_HERSHEY_SIMPLEX, 2, (230, 230, 230), 2)
 
             stop_time = time()  # Запоминаем время окончания обработки кадра
             delta_time = timedelta(seconds=stop_time - start_time)  # Вычисляем время обработки кадра
@@ -458,8 +464,8 @@ class YOLOv10Tracker:
         return t, delta_time_mean  # Возвращаем результаты и среднее время обработки кадров
 
 
-    def mot_metrics(gt: np.array, t: np.array, start: int = ConstantValues.START,
-                    stop: int = ConstantValues.STOP):
+    def mot_metrics(gt: np.array, t: np.array, start: int = ConstValues.START,
+                    stop: int = ConstValues.STOP):
         """
         Вычисляет метрики отслеживания объектов (MOT) на основе данных о истинных значениях и результатах отслеживания
         с использованием методов отслеживания. Функция отслеживает изменения метрик по кадрам.
@@ -553,7 +559,7 @@ class YOLOv10Tracker:
         return strsummary, summary_hist, acc
 
 
-    def analyze_metrics(summary_hist: list, start: int = ConstantValues.START):
+    def analyze_metrics(summary_hist: list, start: int = ConstValues.START):
         """
         Функция для анализа метрик отслеживания объектов и построения графиков их значений по временным кадрам.
 
