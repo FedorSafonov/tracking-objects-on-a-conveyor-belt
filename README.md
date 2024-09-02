@@ -1,6 +1,7 @@
 # Трекинг объектов на конвейерной ленте
 
 - Полный отчёт по проекту можно посмотреть в [report.md](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/report.md)
+- [Презентация](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/Presentation_Renue.pdf)
 
 ## Описание
 
@@ -78,6 +79,7 @@ Renue, IT-компания из Екатеринбурга
 | 6.   | [streamlit_yolo.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/streamlit_yolo.py) | Веб приложение в стримлит с моделью заказчика YOLA |
 | 7.   | [report.md](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/report.md) | Отчёт о проделанной работе |
 | 8.   | [Renue_group_5.ipynb](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/Renue_group_5.ipynb) | Тетрадка с ходом исследования |
+| 9.   | [Presentation_Renue.pdf](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/Presentation_Renue.pdf) | Презентация проекта |
 
 ## Итоги
 
