@@ -103,7 +103,7 @@ Python, Ultralytics, Motmetrics, OpenCV, PyTorch, Numpy, SciPy, time, timedelta,
 - [Анна Йорданова](https://github.com/A-Yordanova)
 - [Юрий Кашин](https://github.com/yakashin)
 - [Александр Вотинов](https://github.com/VotinovAlS)
-- [Гульшат Зарипова]
+- [Гульшат Зарипова](https://github.com/gulshart)
 - [Сергей Пашкин](https://github.com/DrSartoriuss)
 - [Александр Глазунов](https://github.com/pzae)
 
