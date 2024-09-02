@@ -100,7 +100,7 @@ Python, Ultralytics, Motmetrics, OpenCV, PyTorch, Numpy, SciPy, time, timedelta,
 
 ## Команда проекта
 - [Федор Сафонов (TeamLead)](https://github.com/FedorSafonov)
-- [Анна Йорданова]
+- [Анна Йорданова](https://github.com/A-Yordanova)
 - [Юрий Кашин](https://github.com/yakashin)
 - [Александр Вотинов](https://github.com/VotinovAlS)
 - [Гульшат Зарипова]
