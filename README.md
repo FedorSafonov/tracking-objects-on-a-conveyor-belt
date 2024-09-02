@@ -19,11 +19,11 @@ Renue, IT-компания из Екатеринбурга
 ### **Инструкции по использованию:**
 Для того, чтобы корректно работать с данным проектом, необходимо:
 ```
-- выгрузить файлы constant_values.py, init_model.py, main.py, requirements.txt
+- выгрузить файлы config.py, init_model.py, main.py, requirements.txt
 
 - создать виртуальное окружение, в которое необходимо уставить библиотеки, указанные в файле requirements.txt
 
-- в файле constant_values.py необходимо указать пути к тестовому видео и фото, количество фото которые хотим обработать,
+- в файле config.py необходимо указать пути к тестовому видео и фото, количество фото которые хотим обработать,
   файлу предобученной модели yolov10x_v2_4_best.pt и к папке, в которую будут сохраняться результаты.
 
 - после этого запускаем файл main.py
@@ -71,12 +71,13 @@ Renue, IT-компания из Екатеринбурга
 | #    | Наименование файла                | Описание   |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 1.   | [README.md](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/README.md) | Представлена основная информация по проекту и его результатах   |
-| 2.   | [constant_values.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/readme.md) | Класс, в котором задаются константы и пути к файлам   |
-| 3.   | [init_model.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/readme.md) | Класс, который инициализирует работу модели детекции и трекинга объектов и всех функций необходимых для визуализации их работы и расчета метрик   |
-| 4.   | [main.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/readme.md) | Код запуска всех методов имеющихся в классах    |
-| 5.   | [requirements.txt](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/readme.md) | Список всех библиотек и их версии, необходимых для установки в виртуальной среде для запуска кода проекта   |
-| 6.   | [streamlit_model.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/readme.md) | !!Описание будет позже!!   |
-| 7.   | [report.md](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/report.md) | Отчет по проекту   |
+| 2.   | [config.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/config.py) | Класс, в котором задаются константы и пути к файлам   |
+| 3.   | [init_model.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/init_model.py) | Класс, который инициализирует работу модели детекции и трекинга объектов и всех функций необходимых для визуализации их работы и расчета метрик   |
+| 4.   | [main.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/main.py) | Код запуска всех методов имеющихся в классах    |
+| 5.   | [requirements.txt](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/requirements.txt) | Список всех библиотек и их версии, необходимых для установки в виртуальной среде для запуска кода проекта   |
+| 6.   | [streamlit_yolo.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/streamlit_yolo.py) | Веб приложение в стримлит с моделью заказчика YOLA |
+| 7.   | [report.md](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/report.md) | Отчёт о проделанной работе |
+| 8.   | [Renue_group_5.ipynb](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/Renue_group_5.ipynb) | Тетрадка с ходом исследования |
 
 ## Итоги
 
@@ -103,7 +104,7 @@ Python, Ultralytics, Motmetrics, OpenCV, PyTorch, Numpy, SciPy, time, timedelta,
 - [Анна Йорданова](https://github.com/A-Yordanova)
 - [Юрий Кашин](https://github.com/yakashin)
 - [Александр Вотинов](https://github.com/VotinovAlS)
-- [Гульшат Зарипова]
+- [Гульшат Зарипова](https://github.com/gulshart)
 - [Сергей Пашкин](https://github.com/DrSartoriuss)
 - [Александр Глазунов](https://github.com/pzae)
 
